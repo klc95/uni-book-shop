@@ -11,8 +11,8 @@
 				
 			}
 		},
-		onLoad() {
-
+		async onLoad() {
+			
 		},
 		methods: {
 
