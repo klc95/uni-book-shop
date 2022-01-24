@@ -3,19 +3,12 @@
 		<u-swiper :list="slides" name="img_url" height="320"></u-swiper>
 
 		<view class="u-text-center u-margin-20">
-			<u-tabs :list="sortList" :is-scroll="false" :current="currentSort" @change="changeSort" bar-width="100" item-width="160"></u-tabs>
+			<u-tabs :list="sortList" :is-scroll="false" :current="currentSort" @change="changeSort" bar-width="100" goods-width="160"></u-tabs>
 		</view>
 
 		<u-row gutter="16" class="u-skeleton">
-			<u-col span="6" v-for="item in goods.length !== 0 ? goods : 4">
-				<navigator url="" class="goods-item">
-					<u-image class="u-skeleton-fillet" width="100%" height="300rpx" :src="item.cover_url"></u-image>
-					<view class="title u-line-1 u-skeleton-rect">{{ item.title ? item.title : '商品名称' }}</view>
-					<view class="u-flex u-row-between">
-						<view class="price u-skeleton-rect">¥ {{ item.price }}</view>
-						<view class="sales u-skeleton-rect">销量：{{ item.sales }}</view>
-					</view>
-				</navigator>
+			<u-col span="6" v-for="goods in goodsList.length !== 0 ? goodsList : [{}, {}, {}, {}]">
+				<goodsList-card :goods="goods"></goodsList-card>
 			</u-col>
 		</u-row>
 
@@ -43,7 +36,7 @@ export default {
 				}
 			],
 			currentSort: 0,
-			goods: [],
+			goodsList: [],
 			slides: [],
 			page: 1,
 			loading: false
@@ -56,7 +49,7 @@ export default {
 		changeSort(index) {
 			this.currentSort = index;
 			console.log(index);
-			this.goods = [];
+			this.goodsList = [];
 			this.page = 1;
 			this.getData();
 		},
@@ -74,7 +67,7 @@ export default {
 			console.log(res);
 			//隐藏骨架屏
 			this.loading = false;
-			this.goods = [...this.goods, ...res.goods.data];
+			this.goodsList = [...this.goodsList, ...res.goodsList.data];
 			this.slides = res.slides;
 		}
 	},
@@ -86,23 +79,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.goods-item {
-		padding: 40rpx;
-		margin-top: 30rpx;
-		box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
-		.title {
-			margin: 10rpx 0;
-			font-weight: 500;
-			font-size: 32rpx;
-			width: 100%;
-		}
-		.price {
-			color: red;
-			width: 40%;
-		}
-		.sales {
-			color: #888;
-			width: 40%;
-		}
-	}
+	
 </style>
