@@ -23,8 +23,7 @@ export default {
 		};
 	},
 	async onLoad() {
-		const userInfo = await this.$u.api.userInfo();
-		console.log(userInfo);
+
 	},
 	computed: {
 		inputStyle() {
@@ -54,6 +53,8 @@ export default {
 			//请求用户信息
 			const userInfo = await this.$u.api.userInfo();
 			console.log(userInfo);
+			//缓存用户信息
+			this.$u.vuex('vuex_user', userInfo);
 		}
 	}
 };

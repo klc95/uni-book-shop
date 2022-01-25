@@ -8,7 +8,7 @@
 
 		<u-row gutter="16" class="u-skeleton">
 			<u-col span="6" v-for="goods in goodsList.length !== 0 ? goodsList : [{}, {}, {}, {}]">
-				<goodsList-card :goods="goods"></goodsList-card>
+				<goods-card :goods="goods"></goods-card>
 			</u-col>
 		</u-row>
 
@@ -67,7 +67,7 @@ export default {
 			console.log(res);
 			//隐藏骨架屏
 			this.loading = false;
-			this.goodsList = [...this.goodsList, ...res.goodsList.data];
+			this.goodsList = [...this.goodsList, ...res.goods.data];
 			this.slides = res.slides;
 		}
 	},
