@@ -43,6 +43,8 @@ export default {
 		};
 	},
 	onLoad() {
+		// this.$u.api.userInfo(); 用于路由拦截 当获取商品信息或是收藏就需要进行确定是否登录 先暂时注释掉后面再展开
+
 		this.getData();
 	},
 	methods: {

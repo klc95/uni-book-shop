@@ -8,7 +8,7 @@
 			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">登录</button>
 			<view class="alternative">
 				<view class="password">找回密码</view>
-				<view class="issue">注册</view>
+				<view class="issue" @click="jump('pages/auth/register')">注册</view>
 			</view>
 		</view>
 	</view>
@@ -22,9 +22,7 @@ export default {
 			password: ''
 		};
 	},
-	async onLoad() {
-
-	},
+	async onLoad() {},
 	computed: {
 		inputStyle() {
 			let style = {};
@@ -36,6 +34,10 @@ export default {
 		}
 	},
 	methods: {
+		jump(path){
+			// 页面的跳转
+			this.$u.route(path)
+		},
 		async submit() {
 			if (!this.$u.test.email(this.email) || !this.password) return;
 			//处理登录的参数
@@ -49,12 +51,23 @@ export default {
 
 			//缓存token
 			this.$u.vuex('vuex_token', loginRes.access_token);
+			this.$u.toast('登录成功');
 
 			//请求用户信息
 			const userInfo = await this.$u.api.userInfo();
 			console.log(userInfo);
+
 			//缓存用户信息
 			this.$u.vuex('vuex_user', userInfo);
+
+			//登录之后跳转到来源页
+			const backUrl = uni.getStorageSync('bacl_url') || 'pages/index/index';
+			setTimeout(() => {
+				this.$u.route({
+					type: 'reLaunch',
+					url: backUrl
+				});
+			}, 1500); 
 		}
 	}
 };

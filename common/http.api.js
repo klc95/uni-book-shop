@@ -7,6 +7,8 @@ const install = (Vue, vm) => {
 	//认证相关
 	vm.$u.api.authLogin = (params = {}) => vm.$u.post('/api/auth/login', params);  //登录
 	
+	vm.$u.api.authRegister = (params = {}) => vm.$u.post('/api/auth/register', params);  //注册
+	
 	//用户相关
 	vm.$u.api.userInfo = () => vm.$u.get('/api/user'); //用户详情
 }
