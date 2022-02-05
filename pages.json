@@ -19,7 +19,7 @@
             "path" : "pages/cart/cart",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "购物车",
                 "enablePullDownRefresh": false
             }
             
@@ -28,16 +28,7 @@
             "path" : "pages/goods/goods",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-		,{
-            "path" : "pages/auth/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "商品分类",
                 "enablePullDownRefresh": false
             }
             
@@ -46,13 +37,31 @@
             "path" : "pages/auth/login",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "登录",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
             "path" : "pages/auth/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/center/baseInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改个人信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/goods/goodsDetail",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
